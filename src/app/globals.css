@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 /* ===================================================
-   TOKENS
+  TOKENS
 =================================================== */
-:root {
+@theme inline {
   --bg-dark:       #0D0D0D;
   --bg-dark-2:     #141414;
   --bg-dark-3:     #1C1C1C;
+
   --bg-light:      #F2EDE3;
   --bg-light-2:    #EAE4D8;
 
@@ -24,26 +25,35 @@
   --error:    #FF5D5D;
   --success:  #6FD98F;
 
-  --font-display: 'Bebas Neue', Impact, sans-serif;
-  --font-body:    'Inter', system-ui, sans-serif;
-  --font-script:  'Caveat', cursive;
-  --font-mono:    'IBM Plex Mono', monospace;
+  --font-display: var(--font-bebas), Impact, sans-serif;
+  --font-body:    var(--font-inter), system-ui, sans-serif;
+  --font-script:  var(--font-caveat), cursive;
+  --font-mono:    var(--font-ibm-mono), monospace;
+}
+
+
+
+.container-custom {
+  max-width: 900px;
+  margin-inline: auto;
+  width: 100%;
+  padding-inline: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    padding-inline: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-custom {
+    padding-inline: 0rem;
+  }
 }
 
 /* ===================================================
-   RESET + BASE
-=================================================== */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font-body);
-  -webkit-font-smoothing: antialiased;
-  color: var(--text-white);
-}
-a { text-decoration: none; color: inherit; }
-
-/* ===================================================
-   GRID OVERLAY (fond décoratif 40px)
+  GRID
 =================================================== */
 .grid-dark {
   background-image:
@@ -51,6 +61,7 @@ a { text-decoration: none; color: inherit; }
     linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
   background-size: 40px 40px;
 }
+
 .grid-light {
   background-image:
     linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
@@ -114,7 +125,7 @@ a { text-decoration: none; color: inherit; }
 .accent-top-green::before { background: var(--accent-green); }
 
 /* ===================================================
-   ANIMATION
+   ANIMATIONS
 =================================================== */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
@@ -130,10 +141,27 @@ a { text-decoration: none; color: inherit; }
 .xp-pulse { animation: xpPulse 1.5s ease infinite; }
 
 @keyframes shake {
-  0%,100% { transform: translateX(0);  }
+  0%,100% { transform: translateX(0);   }
   20%     { transform: translateX(-8px); }
   40%     { transform: translateX(8px);  }
   60%     { transform: translateX(-5px); }
   80%     { transform: translateX(5px);  }
 }
 .shake { animation: shake 0.4s ease; }
+
+/* ===================================================
+   TUBES GRADIENT DÉCORATIFS
+=================================================== */
+.tube {
+  position: absolute;
+  height: 22px;
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 0;
+}
+.tube-rainbow { background: linear-gradient(90deg, #ff4040, #ff8c00, #ffe135, #6bf56b, #4b7bf5, #a855f7); }
+.tube-pink    { background: linear-gradient(135deg, #ff4ec7, #e84848); }
+.tube-orange  { background: linear-gradient(135deg, #ff8c00, #ffe135); }
+.tube-blue-pu { background: linear-gradient(135deg, #4b7bf5, #a855f7); }
+.tube-green   { background: linear-gradient(135deg, #6bf56b, #b8f54e); }
+.tube-cyan    { background: linear-gradient(135deg, #22d3ee, #4b7bf5); }
