@@ -110,6 +110,21 @@ seedLessons().catch(console.error)
 - [ ] Fine-tuning Mistral open-weight (Apache 2.0)
 - [ ] Extension shindzuani / kibushi
 
+### Phase 5 — Modèle Shimaoré Officiel (Mois 6 → An 2)
+> Voir `docs/model-training.md` pour le guide complet
+
+- [ ] **Phase A** : Construire le corpus (`python scripts/build_corpus.py`)
+- [ ] **Phase A** : Valider les entrées en tant que natif (`python scripts/validate_corpus.py`)
+- [ ] **Phase A** : Ajouter 50 phrases/jour (`python scripts/add_sentences.py`)
+- [ ] **Phase B** : Fine-tuner `opus-mt-fr-swc` sur Google Colab (GPU T4 gratuit)
+- [ ] **Phase C** : Publier le modèle sur HuggingFace Hub (`luha-shimaoré/opus-mt-fr-shi`)
+- [ ] **Phase C** : Publier le dataset (`luha-shimaoré/shimaoré-fr-parallel-corpus`)
+- [ ] **Phase C** : Intégrer `/api/translate` dans Luha (remplace RAG Mistral)
+- [ ] **Phase D** : Contacter Masakhane + Common Voice Mozilla
+- [ ] **Phase D** : Corpus 10 000+ phrases → modèle de langue shimaoré (mT5)
+- [ ] **Phase E** : Partenariat INALCO / Conseil Départemental Mayotte
+- [ ] **Phase E** : Premier LLM shimaoré open-source reconnu officiellement
+
 ---
 
 ## Toutes les Commandes pnpm
