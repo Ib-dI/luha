@@ -401,7 +401,7 @@ export default function LandingPage() {
 			</section>
 
 			{/* ── TÉMOIGNAGES ────────────────────────────────────────── */}
-			<section
+			{/* <section
 				id="temoignages"
 				className="grid-light ch-box ch-light relative overflow-hidden bg-(--bg-light) py-16 md:py-24 px-4 sm:px-8 md:px-16"
 			>
@@ -485,7 +485,7 @@ export default function LandingPage() {
 						))}
 					</div>
 				</div>
-			</section>
+			</section> */}
 
 			{/* ── FOOTER CTA ─────────────────────────────────────────── */}
 			<section className="grid-light ch-box ch-light relative overflow-hidden text-center bg-(--bg-light-2) py-16 md:py-24 px-4 sm:px-8 md:px-16">
