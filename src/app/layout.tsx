@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Caveat, IBM_Plex_Mono, Inter } from "next/font/google";
+import { Providers } from "@/components/providers";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -47,7 +48,7 @@ export default function RootLayout({
 				<link rel="icon" href="/logo/dark_favicon.png" type="image/png" />
 			</head>
 			<body className="antialiased" style={{ background: "var(--bg-dark)" }}>
-				{children}
+				<Providers>{children}</Providers>
 			</body>
 		</html>
 	);
