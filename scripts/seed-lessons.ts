@@ -1,10 +1,5 @@
-import { createClient } from '@supabase/supabase-js'
+import { supabaseAdmin as supabase } from '../src/supabase-client'
 import { lessons } from '../src/data/lessonData'
-
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_KEY!
-)
 
 async function seedLessons() {
   const rows = lessons.map((lesson, index) => ({

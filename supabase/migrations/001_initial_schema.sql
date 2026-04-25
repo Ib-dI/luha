@@ -111,9 +111,14 @@ create policy "vocabulary_read_all" on vocabulary for select using (auth.role() 
 create policy "lessons_read_all" on lessons for select using (auth.role() = 'authenticated');
 create policy "exercises_read_approved" on exercises for select using (auth.role() = 'authenticated' and is_approved = true);
 
+-- Fonction IMMUTABLE pour indexer le tableau shimaoré en texte
+create or replace function shimaore_array_to_text(arr text[])
+  returns text language sql immutable strict as
+  $$ select array_to_string(arr, ' ') $$;
+
 -- Index
 create index vocabulary_french_trgm on vocabulary using gin (french gin_trgm_ops);
-create index vocabulary_shimaoré_trgm on vocabulary using gin ((shimaoré::text) gin_trgm_ops);
+create index vocabulary_shimaoré_trgm on vocabulary using gin (shimaore_array_to_text(shimaoré) gin_trgm_ops);
 create index user_vocab_review_idx on user_vocabulary (user_id, next_review_at, strength) where status != 'mastered';
 create index exercises_lesson_idx on exercises (lesson_id, difficulty) where is_approved = true;
 create index vocabulary_category_idx on vocabulary (category);

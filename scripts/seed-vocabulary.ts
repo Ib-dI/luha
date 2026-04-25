@@ -1,10 +1,5 @@
-import { createClient } from '@supabase/supabase-js'
+import { supabaseAdmin as supabase } from '../src/supabase-client'
 import translationsData from '../src/data/structured_translations.json'
-
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_KEY!
-)
 
 function inferCategory(word: string): string {
   const patterns: [RegExp, string][] = [
