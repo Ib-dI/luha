@@ -13,9 +13,9 @@ const CHAPTERS = [
     title: 'Premiers Pas',
     subtitle: 'Les bases de la communication',
     emoji: '🌱',
-    color: '#22a722',
-    bg: 'rgba(107,245,107,0.07)',
-    border: 'rgba(34,167,34,0.2)',
+    color: '#6FD98F',
+    bg: 'rgba(111,217,143,0.09)',
+    border: 'rgba(111,217,143,0.3)',
     lessonIds: [1, 2, 3, 4],
   },
   {
@@ -33,9 +33,9 @@ const CHAPTERS = [
     title: 'Structure & Expression',
     subtitle: 'Adjectifs, accompli et verbes essentiels',
     emoji: '🏗️',
-    color: '#C9840A',
-    bg: 'rgba(245,225,53,0.07)',
-    border: 'rgba(201,132,10,0.2)',
+    color: '#FF8C00',
+    bg: 'rgba(255,140,0,0.07)',
+    border: 'rgba(255,140,0,0.22)',
     lessonIds: [11, 12, 13, 14, 15, 16, 17, 18],
   },
   {
@@ -53,9 +53,9 @@ const CHAPTERS = [
     title: 'Maîtrise',
     subtitle: 'Tous les temps et formes avancées',
     emoji: '⚡',
-    color: '#7C3AED',
-    bg: 'rgba(168,85,247,0.06)',
-    border: 'rgba(124,58,237,0.2)',
+    color: '#A855F7',
+    bg: 'rgba(168,85,247,0.07)',
+    border: 'rgba(168,85,247,0.22)',
     lessonIds: [27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37],
   },
 ]
@@ -112,11 +112,9 @@ export default function LessonMap({
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="ch-box ch-light grain grain-light relative rounded-2xl p-6 overflow-hidden"
+        className="grid-light grain grain-light relative rounded-2xl p-6 overflow-hidden"
         style={{ background: 'var(--bg-light-2)', border: '1px solid rgba(0,0,0,0.08)' }}
       >
-        <span className="ch ch-tl" /><span className="ch ch-tr" />
-        <span className="ch ch-bl" /><span className="ch ch-br" />
 
         {/* Tube déco */}
         <span
@@ -183,7 +181,7 @@ export default function LessonMap({
           >
             {/* Chapter header */}
             <div
-              className="rounded-xl p-4 mb-4 flex items-center justify-between"
+              className="rounded-2xl p-4 mb-4 flex items-center justify-between"
               style={{ background: chapter.bg, border: `1px solid ${chapter.border}` }}
             >
               <div className="flex items-center gap-3">
@@ -259,7 +257,7 @@ function LessonCard({ lesson, status, chapterColor, animIndex }: LessonCardProps
   const isCompleted = status === 'completed'
 
   const accentColor =
-    isCompleted ? '#22a722' :
+    isCompleted ? '#6FD98F' :
     isCurrent   ? chapterColor :
     isLocked    ? 'rgba(0,0,0,0.2)' :
                   chapterColor
@@ -270,7 +268,7 @@ function LessonCard({ lesson, status, chapterColor, animIndex }: LessonCardProps
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, delay: animIndex * 0.025, ease: [0.22, 1, 0.36, 1] }}
       whileHover={isLocked ? {} : { y: -2, transition: { duration: 0.15 } }}
-      className="relative grain grain-light rounded-xl p-4 flex items-start gap-3 overflow-hidden group"
+      className="relative grain grain-light rounded-2xl p-4 flex items-start gap-3 overflow-hidden group"
       style={{
         background: isLocked ? 'rgba(0,0,0,0.03)' : 'var(--bg-light-2)',
         border: `1px solid ${isLocked ? 'rgba(0,0,0,0.06)' : 'rgba(0,0,0,0.09)'}`,
@@ -329,7 +327,7 @@ function LessonCard({ lesson, status, chapterColor, animIndex }: LessonCardProps
         <motion.span
           animate={{ opacity: [1, 0.55, 1] }}
           transition={{ duration: 1.8, repeat: Infinity }}
-          className="absolute -top-2.5 left-3 px-2 py-0.5 rounded-full text-[9px] font-bold tracking-wider"
+          className="absolute -top-2.5 left-3 px-2 py-0.5 rounded-full text-[11px] font-bold tracking-wider"
           style={{ background: chapterColor, color: 'white', fontFamily: 'var(--font-mono)' }}
         >
           SUIVANTE

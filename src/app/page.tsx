@@ -100,7 +100,7 @@ export default function LandingPage() {
 							</a>
 						</li>
 					</ul>
-					<BtnPrimary href="/dashboard">Commencer gratuitement</BtnPrimary>
+					<BtnPrimary href="/learn">Commencer gratuitement</BtnPrimary>
 				</div>
 			</nav>
 

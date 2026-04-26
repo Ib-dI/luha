@@ -23,7 +23,7 @@ export default function XPBar({ xp, level }: XPBarProps) {
     >
       {/* Niveau */}
       <span
-        className="text-[10px] font-bold uppercase tracking-widest shrink-0"
+        className="text-[11px] font-bold uppercase tracking-widest shrink-0"
         style={{ color: 'var(--accent-blue)', fontFamily: 'var(--font-mono)' }}
       >
         NIV.{level}
@@ -45,7 +45,7 @@ export default function XPBar({ xp, level }: XPBarProps) {
 
       {/* XP */}
       <span
-        className="text-[10px] shrink-0 tabular-nums"
+        className="text-[11px] shrink-0 tabular-nums"
         style={{ color: 'var(--text-gray)', fontFamily: 'var(--font-mono)' }}
       >
         {xpInLevel}

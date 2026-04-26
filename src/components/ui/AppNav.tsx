@@ -151,7 +151,7 @@ export default function AppNav({ user, streak, xp }: AppNavProps) {
               style={{ color: active ? 'var(--accent-blue)' : 'var(--text-gray)' }}
             >
               <Icon size={18} strokeWidth={active ? 2.5 : 2} />
-              <span className="text-[10px]">{label}</span>
+              <span className="text-[11px]">{label}</span>
             </Link>
           )
         })}
