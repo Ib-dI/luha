@@ -31,8 +31,15 @@ describe('getAdjacentLessons', () => {
     expect(next).toBeNull()
   })
   it('middle lesson has both prev and next', () => {
+    const all = getAllLessons()
+    const idx = all.findIndex((l) => l.id === 10)
     const { prev, next } = getAdjacentLessons(10)
-    expect(prev!.id).toBe(9)
-    expect(next!.id).toBe(11)
+    expect(prev!.id).toBe(all[idx - 1].id)
+    expect(next!.id).toBe(all[idx + 1].id)
+  })
+  it('returns null for both when id not found', () => {
+    const { prev, next } = getAdjacentLessons(999)
+    expect(prev).toBeNull()
+    expect(next).toBeNull()
   })
 })
