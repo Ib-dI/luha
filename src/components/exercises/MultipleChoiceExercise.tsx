@@ -16,7 +16,7 @@ export default function MultipleChoiceExercise({ exercise, onAnswer, disabled = 
 
   if (exercise.question.type !== 'qcm') return null
 
-  const { question, choices } = exercise.question
+  const { question: questionText, choices } = exercise.question
 
   function handleChoice(choice: string) {
     if (answered || disabled) return
@@ -33,7 +33,7 @@ export default function MultipleChoiceExercise({ exercise, onAnswer, disabled = 
         className="text-xl sm:text-2xl font-medium text-center"
         style={{ color: 'var(--text-dark)', fontFamily: 'var(--font-display)', letterSpacing: '0.03em' }}
       >
-        {question}
+        {questionText}
       </motion.p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -43,7 +43,7 @@ export default function MultipleChoiceExercise({ exercise, onAnswer, disabled = 
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.25, delay: i * 0.05, ease: EASE_OUT }}
-            whileTap={answered || disabled ? {} : { scale: 0.98 }}
+            whileTap={answered || disabled ? undefined : { scale: 0.98 }}
             onClick={() => handleChoice(choice)}
             disabled={answered || disabled}
             className="w-full px-4 py-3.5 rounded-xl text-sm font-medium text-left transition-opacity disabled:opacity-60"
