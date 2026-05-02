@@ -143,10 +143,10 @@ function ContentBlock({ block, index }: { block: LessonContent; index: number })
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: 0.1 + index * 0.04, ease: [0.22, 1, 0.36, 1] }}
     >
-      {block.type === 'text' ? (
-        <TextBlock text={block.value} />
-      ) : (
+      {block.type === 'table' ? (
         <TableBlock header={block.value.header} rows={block.value.rows} />
+      ) : (
+        <TextBlock text={block.value} />
       )}
     </motion.div>
   )

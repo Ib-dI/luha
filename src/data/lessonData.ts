@@ -1,5 +1,6 @@
 export type LessonContent =
   | { type: "text"; value: string }
+  | { type: "titre"; value: string }
   | { type: "table"; value: { header: string[]; rows: string[][] } };
 
 export type Lesson = {
@@ -8,7 +9,7 @@ export type Lesson = {
   description: string;
   content: LessonContent[];
 };
-export const lessons = [
+export const lessons: Lesson[] = [
   {
     id: 1,
     title: "1 - Les Salutations",
