@@ -13,7 +13,7 @@ export default function XPBar({ xp, level }: XPBarProps) {
 
   return (
     <div
-      className="w-full flex items-center gap-3 px-4 py-1.5"
+      className="w-full flex items-center gap-3 px-5 py-1.5"
       style={{
         background: 'var(--bg-light-2)',
         borderBottom: '1px solid rgba(0,0,0,0.06)',

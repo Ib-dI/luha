@@ -67,8 +67,8 @@ export default function LandingPage() {
 	return (
 		<main className="[font-family:var(--font-body)] ">
 			{/* ── NAVBAR ─────────────────────────────────────────────── */}
-			<nav className="fixed top-0 left-0 right-0 z-100 py-4.5 bg-[rgba(242,237,227,0.88)] backdrop-blur-md border-b border-black/8">
-				<div className="flex container-custom items-center gap-8">
+			<nav className="fixed top-0 left-0 right-0 z-100 py-4.5 bg-[rgba(242,237,227,0.78)] backdrop-blur-xs border-b border-black/8">
+				<div className="flex items-center gap-8 px-6 sm:px-12 md:px-16 lg:px-24">
 					
 					<Link
 						href="/"
@@ -155,20 +155,30 @@ export default function LandingPage() {
 						SHIMAORÉ · MAYOTTE
 					</span>
 
-					<h1 className="font-britney-regular text-[52px] md:text-[72px] lg:text-[80px] leading-none tracking-[-0.01em] mt-2">
-						<span className="text-(--text-dark)">
-							APPRENDS LA
-							<br />
-							LANGUE MAHORAISE.
-						</span>
-						<br />
-						<span
-							className="font-script text-[32px] md:text-[48px] lg:text-[56px] text-(--accent-yellow)"
-							style={{ WebkitTextStroke: "0.7px rgba(0,0,0,0.1)" }}
-						>
-							Luha ya Shi-Maoré.
-						</span>
-					</h1>
+					<div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+						<div className="flex-1">
+							<h1 className="font-britney-variable text-24 md:text-[72px] lg:text-[80px] leading-none tracking-[-0.01em] font-bold mt-2">
+								<span className="text-(--text-dark)">
+									Apprends la langue
+									<br />
+									Mahoraise.
+									<br />
+									Le
+								</span>
+								<span className="text-(--accent-blue) ml-2 circle">Shi-Maoré.</span>
+							</h1>
+						</div>
+
+						<div className="flex-1 flex justify-center lg:justify-end">
+							<Image
+								src="/images/Mayotte_island.png"
+								alt="Île de Mayotte"
+								width={400}
+								height={300}
+								className="rounded-2xl shadow-lg"
+							/>
+						</div>
+					</div>
 
 					<p className="text-base md:text-lg text-(--text-dark-gray) leading-relaxed max-w-135">
 						Luha — première application dédiée au shimaoré. Leçons structurées,

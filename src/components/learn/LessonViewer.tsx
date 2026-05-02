@@ -15,7 +15,7 @@ interface LessonViewerProps {
 
 export default function LessonViewer({ lesson, prevLesson, nextLesson }: LessonViewerProps) {
   return (
-    <div className="max-w-2xl mx-auto space-y-6">
+    <div className="max-w-2xl mx-auto space-y-6 p-6" >
 
       {/* ─── Breadcrumb ─── */}
       <motion.div
@@ -129,7 +129,7 @@ export default function LessonViewer({ lesson, prevLesson, nextLesson }: LessonV
           className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-opacity hover:opacity-80"
           style={{ background: 'rgba(75,123,245,0.1)', color: 'var(--accent-blue)', border: '1px solid rgba(75,123,245,0.2)' }}
         >
-          ⚡ S'entraîner sur cette leçon
+          ⚡ S&apos;entraîner sur cette leçon
         </Link>
       </motion.div>
     </div>
@@ -226,7 +226,7 @@ function TableBlock({ header, rows }: { header: string[]; rows: string[][] }) {
             return (
               <tr
                 key={ri}
-                className="border-t transition-colors hover:bg-black/[0.02]"
+                className="border-t transition-colors hover:bg-black/2"
                 style={{ borderColor: 'rgba(0,0,0,0.06)' }}
               >
                 {row.map((cell, ci) => (

@@ -97,7 +97,7 @@
 }
 
 /* ===================================================
-   CROSSHAIRS
+  CROSSHAIRS
 =================================================== */
 .ch-box { position: relative; }
 .ch {
@@ -115,7 +115,7 @@
 .ch-br { bottom: 16px; right: 16px; border-bottom: 1.5px solid; border-right: 1.5px solid; }
 
 /* ===================================================
-   GRAIN NOISE (via SVG feTurbulence)
+  GRAIN NOISE (via SVG feTurbulence)
 =================================================== */
 .grain { position: relative; overflow: hidden; }
 .grain::after {
@@ -134,7 +134,7 @@
 .grain > * { position: relative; z-index: 2; }
 
 /* ===================================================
-   CARD ACCENT TOP BORDER
+  CARD ACCENT TOP BORDER
 =================================================== */
 .accent-top-red::before,
 .accent-top-blue::before,
@@ -177,7 +177,7 @@
 .shake { animation: shake 0.4s ease; }
 
 /* ===================================================
-   TUBES GRADIENT DÉCORATIFS
+  TUBES GRADIENT DÉCORATIFS
 =================================================== */
 .tube {
   position: absolute;
@@ -192,3 +192,10 @@
 .tube-blue-pu { background: linear-gradient(135deg, #4b7bf5, #a855f7); }
 .tube-green   { background: linear-gradient(135deg, #6bf56b, #b8f54e); }
 .tube-cyan    { background: linear-gradient(135deg, #22d3ee, #4b7bf5); }
+
+/* .circle {
+  background: url("/public/images/Arrow\ 4.png");
+  background-size: cover;
+  background-position: center;
+
+} */

@@ -130,7 +130,7 @@ export default function AppNav({ user, streak, xp }: AppNavProps) {
       </nav>
 
       {/* Spacer pour compenser le fixed nav */}
-      <div className="h-[57px]" />
+      <div className="h-14.25" />
 
       {/* ─── Bottom nav mobile ─── */}
       <div
