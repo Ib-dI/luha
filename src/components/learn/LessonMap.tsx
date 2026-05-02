@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { Lock, CheckCircle2, ChevronRight } from 'lucide-react'
 import type { Lesson } from '@/data/lessonData'
+import { getLessonStatus, type LessonStatus } from '@/lib/lessons/progressionEngine'
 
 // ─── Chapitres ────────────────────────────────────────────────────────────────
 
@@ -64,22 +65,6 @@ const CHAPTERS = [
 
 function cleanTitle(title: string) {
   return title.replace(/^\d+\s*-\s*/, '')
-}
-
-type LessonStatus = 'completed' | 'current' | 'available' | 'locked'
-
-function getStatus(
-  lessonId: number,
-  completedIds: Set<number>,
-  userXP: number
-): LessonStatus {
-  if (completedIds.has(lessonId)) return 'completed'
-  const xpNeeded = (lessonId - 1) * 50
-  if (userXP >= xpNeeded) {
-    const prevDone = lessonId === 1 || completedIds.has(lessonId - 1)
-    return prevDone ? 'current' : 'available'
-  }
-  return 'locked'
 }
 
 // ─── Props ────────────────────────────────────────────────────────────────────
@@ -231,7 +216,7 @@ export default function LessonMap({
                 <LessonCard
                   key={lesson.id}
                   lesson={lesson}
-                  status={getStatus(lesson.id, completedIds, userXP)}
+                  status={getLessonStatus(lesson.id, completedIds, userXP)}
                   chapterColor={chapter.color}
                   animIndex={chapterIndex * 10 + idx}
                 />
