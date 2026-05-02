@@ -173,7 +173,10 @@ export async function loadLessonExercises(
     .eq('is_approved', true)
     .limit(10)
 
-  const dbRows = error || !data ? [] : data
+  if (error) {
+    console.error('[loadLessonExercises] Supabase error:', error.message)
+  }
+  const dbRows = data ?? []
 
   // Map DB rows to Exercise shape
   const dbExercises: Exercise[] = dbRows.map((row: Record<string, unknown>) => ({
@@ -212,22 +215,30 @@ export async function loadReviewSession(
 
   if (wpError || !wordProgressRows) return []
 
+  // Collect all vocabulary IDs in one pass, then batch-fetch in a single query
+  const vocabIds = wordProgressRows.map((row) => row.vocabulary_id as number | string)
+
+  // Select only 'id, french' to avoid TS parser issues with the accented 'shimaoré' column name
+  const { data: vocabRows, error: vocabError } = await supabase
+    .from('vocabulary')
+    .select('id, french')
+    .in('id', vocabIds)
+
+  if (vocabError || !vocabRows) return []
+
+  // Build a map for O(1) lookup
+  const vocabMap = new Map<number | string, string>()
+  for (const v of vocabRows) {
+    const row = v as Record<string, unknown>
+    vocabMap.set(row['id'] as number | string, String(row['french'] ?? ''))
+  }
+
   const exercises: Exercise[] = []
 
   for (const row of wordProgressRows) {
     const vocabId = row.vocabulary_id as number | string
-
-    // Select only 'french' to avoid TS parser issues with the accented 'shimaoré' column name
-    const { data: vocabRaw, error: vocabError } = await supabase
-      .from('vocabulary')
-      .select('french')
-      .eq('id', vocabId)
-      .single()
-
-    if (vocabError || !vocabRaw) continue
-
-    const vocab = vocabRaw as Record<string, unknown>
-    const french = String(vocab['french'] ?? '')
+    const french = vocabMap.get(vocabId)
+    if (!french) continue
 
     exercises.push({
       id: `review-${vocabId}`,
