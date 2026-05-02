@@ -15,6 +15,7 @@ export default async function PracticePage({ params }: PageProps) {
 
   const { lessonId: lessonIdParam } = await params
   const lessonId = parseInt(lessonIdParam, 10)
+  if (isNaN(lessonId)) redirect('/learn')
   const lesson = getLessonById(lessonId)
   if (!lesson) redirect('/learn')
 

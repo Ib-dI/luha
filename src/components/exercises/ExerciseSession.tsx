@@ -61,7 +61,7 @@ export default function ExerciseSession({ exercises, lessonId, onComplete }: Exe
       setLastResult(null)
     } else {
       setPhase('complete')
-      onComplete?.(correctCount + (lastResult?.correct ? 1 : 0))
+      onComplete?.(correctCount)
     }
   }
 
@@ -132,12 +132,18 @@ export default function ExerciseSession({ exercises, lessonId, onComplete }: Exe
       </div>
 
       {/* Exercise */}
-      {phase === 'question' && exercise.question.type === 'qcm' && (
-        <MultipleChoiceExercise
-          exercise={exercise}
-          onAnswer={handleAnswer}
-          disabled={false}
-        />
+      {phase === 'question' && (
+        exercise.question.type === 'qcm' ? (
+          <MultipleChoiceExercise
+            exercise={exercise}
+            onAnswer={handleAnswer}
+          />
+        ) : (
+          <div className="text-sm text-center py-8" style={{ color: 'var(--text-dark-gray)' }}>
+            Type d&apos;exercice non supporté.{' '}
+            <button onClick={() => advance()} className="underline">Passer</button>
+          </div>
+        )
       )}
 
       {/* Feedback overlay */}
