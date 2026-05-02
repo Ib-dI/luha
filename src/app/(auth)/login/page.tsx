@@ -36,7 +36,7 @@ export default function LoginPage() {
 
       {/* Card */}
       <motion.div
-        className="ch-box ch-light grain grain-light relative rounded-2xl p-7 overflow-hidden"
+        className="grain grain-light relative rounded-2xl p-7 overflow-hidden"
         style={{
           background: 'var(--bg-light-2)',
           border: '1px solid rgba(0,0,0,0.1)',
@@ -44,8 +44,6 @@ export default function LoginPage() {
         variants={fadeUp}
         custom={1}
       >
-        <span className="ch ch-tl" /><span className="ch ch-tr" />
-        <span className="ch ch-bl" /><span className="ch ch-br" />
 
         {/* Tube déco */}
         <span
@@ -56,7 +54,7 @@ export default function LoginPage() {
         <div className="relative z-10">
           {/* Label */}
           <span
-            className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4"
+            className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-widest uppercase mb-4"
             style={{ background: 'rgba(75,123,245,0.1)', color: 'var(--accent-blue)' }}
           >
             Connexion
@@ -136,7 +134,7 @@ export default function LoginPage() {
             <motion.button
               type="submit"
               disabled={pending}
-              className="w-full py-3 rounded-xl font-semibold text-sm transition-all disabled:opacity-50"
+              className="w-full py-3 rounded-full font-semibold text-sm transition-all disabled:opacity-50"
               style={{ background: 'var(--accent-blue)', color: 'white', border: '1.5px solid var(--accent-blue)' }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}

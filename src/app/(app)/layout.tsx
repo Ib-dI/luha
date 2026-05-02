@@ -30,7 +30,11 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   const streak = stats?.streak_days ?? 0
 
   return (
-    <div className="min-h-screen" style={{ background: 'var(--bg-light)' }}>
+    <div className="grid-light ch-box ch-light relative min-h-screen" style={{ background: 'var(--bg-light)' }}>
+      <span className="ch ch-tl" />
+      <span className="ch ch-tr" />
+      <span className="ch ch-bl" />
+      <span className="ch ch-br" />
       <AppNav user={user} streak={streak} xp={xp} />
       <XPBar xp={xp} level={level} />
 

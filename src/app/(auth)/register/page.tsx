@@ -36,7 +36,7 @@ export default function RegisterPage() {
 
       {/* Card */}
       <motion.div
-        className="ch-box ch-light grain grain-light relative rounded-2xl p-7 overflow-hidden"
+        className="grain grain-light relative rounded-2xl p-7 overflow-hidden"
         style={{
           background: 'var(--bg-light-2)',
           border: '1px solid rgba(0,0,0,0.1)',
@@ -44,8 +44,6 @@ export default function RegisterPage() {
         variants={fadeUp}
         custom={1}
       >
-        <span className="ch ch-tl" /><span className="ch ch-tr" />
-        <span className="ch ch-bl" /><span className="ch ch-br" />
 
         <span
           className="tube tube-green absolute opacity-20 pointer-events-none"
@@ -54,8 +52,8 @@ export default function RegisterPage() {
 
         <div className="relative z-10">
           <span
-            className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-widest uppercase mb-4"
-            style={{ background: 'rgba(107,245,107,0.12)', color: '#22a722' }}
+            className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-widest uppercase mb-4"
+            style={{ background: 'rgba(111,217,143,0.15)', color: 'var(--success)' }}
           >
             Inscription gratuite
           </span>
@@ -138,7 +136,7 @@ export default function RegisterPage() {
             <motion.button
               type="submit"
               disabled={pending}
-              className="w-full py-3 rounded-xl font-semibold text-sm transition-all disabled:opacity-50"
+              className="w-full py-3 rounded-full font-semibold text-sm transition-all disabled:opacity-50"
               style={{ background: 'var(--accent-blue)', color: 'white', border: '1.5px solid var(--accent-blue)' }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}

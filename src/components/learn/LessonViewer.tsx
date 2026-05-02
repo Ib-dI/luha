@@ -41,10 +41,9 @@ export default function LessonViewer({ lesson, prevLesson, nextLesson }: LessonV
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="ch-box ch-light grain grain-light relative rounded-2xl p-6 overflow-hidden"
+        className="grid-light grain grain-light relative rounded-2xl p-6 overflow-hidden"
         style={{ background: 'var(--bg-light-2)', border: '1px solid rgba(0,0,0,0.08)' }}
       >
-        <span className="ch ch-tl" /><span className="ch ch-tr" />
 
         <span
           className="tube tube-cyan absolute opacity-20 pointer-events-none"
@@ -60,7 +59,7 @@ export default function LessonViewer({ lesson, prevLesson, nextLesson }: LessonV
           </div>
           <div>
             <p
-              className="text-[10px] font-bold uppercase tracking-[0.12em] mb-0.5"
+              className="text-[11px] font-bold uppercase tracking-[0.12em] mb-0.5"
               style={{ color: 'var(--accent-red)', fontFamily: 'var(--font-mono)' }}
             >
               Leçon {lesson.id}
@@ -97,7 +96,7 @@ export default function LessonViewer({ lesson, prevLesson, nextLesson }: LessonV
           <Link href={`/learn/${prevLesson.id}`} className="flex-1">
             <motion.div
               whileHover={{ x: -2 }}
-              className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-medium transition-colors"
+              className="flex items-center gap-2 px-4 py-3 rounded-2xl text-sm font-medium transition-colors"
               style={{
                 background: 'var(--bg-light-2)',
                 border: '1px solid rgba(0,0,0,0.08)',
@@ -146,12 +145,29 @@ function ContentBlock({ block, index }: { block: LessonContent; index: number })
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: FADE_DURATION.fast, delay: 0.1 + index * STAGGER_DELAY.section, ease: EASE_OUT }}
     >
-      {block.type === 'table' ? (
-        <TableBlock header={block.value.header} rows={block.value.rows} />
-      ) : (
+      {block.type === 'titre' ? (
+        <TitreBlock text={block.value} />
+      ) : block.type === 'text' ? (
         <TextBlock text={block.value} />
+      ) : (
+        <TableBlock header={block.value.header} rows={block.value.rows} />
       )}
     </motion.div>
+  )
+}
+
+function TitreBlock({ text }: { text: string }) {
+  return (
+    <div className="flex items-center gap-3 py-1 my-3">
+      <div className="h-px flex-1" style={{ background: 'rgba(0,0,0,0.1)' }} />
+      <p
+        className="text-[11px] font-bold uppercase tracking-[0.12em] shrink-0 text-center max-w-[80%]"
+        style={{ color: 'var(--accent-blue)', fontFamily: 'var(--font-mono)' }}
+      >
+        {text}
+      </p>
+      <div className="h-px flex-1" style={{ background: 'rgba(0,0,0,0.1)' }} />
+    </div>
   )
 }
 
@@ -163,7 +179,7 @@ function TextBlock({ text }: { text: string }) {
       <div className="flex items-center gap-3 py-1 my-2">
         <div className="h-px flex-1" style={{ background: 'rgba(0,0,0,0.1)' }} />
         <p
-          className="text-[10px] font-bold uppercase tracking-[0.12em] shrink-0"
+          className="text-[11px] font-bold uppercase tracking-[0.12em] shrink-0"
           style={{ color: 'var(--accent-blue)', fontFamily: 'var(--font-mono)' }}
         >
           {text.trim()}
@@ -195,7 +211,7 @@ function TableBlock({ header, rows }: { header: string[]; rows: string[][] }) {
               {header.map((h, i) => (
                 <th
                   key={i}
-                  className="px-4 py-2.5 text-left text-[10px] font-bold uppercase tracking-widest"
+                  className="px-4 py-2.5 text-left text-[11px] font-bold uppercase tracking-widest"
                   style={{ color: 'var(--accent-blue)', fontFamily: 'var(--font-mono)' }}
                 >
                   {h}
