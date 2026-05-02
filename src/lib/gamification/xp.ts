@@ -26,6 +26,12 @@ export function getXPProgress(xp: number): { current: number; required: number; 
   const levelEnd = LEVEL_THRESHOLDS[level] ?? LEVEL_THRESHOLDS[LEVEL_THRESHOLDS.length - 1]
   const current = xp - levelStart
   const required = levelEnd - levelStart
+
+  // At max level levelEnd === levelStart, so required === 0 — guard against NaN
+  if (required === 0) {
+    return { current: levelStart, required: levelStart, percent: 100 }
+  }
+
   return {
     current,
     required,

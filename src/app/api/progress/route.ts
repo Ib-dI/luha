@@ -12,9 +12,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
-  const body: { action: string; lessonId?: number } = await request.json()
+  const body: { lessonId?: number } = await request.json()
 
-  if (body.action !== 'complete_lesson' || !body.lessonId) {
+  if (!body.lessonId) {
     return NextResponse.json({ error: 'Invalid payload' }, { status: 400 })
   }
 
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
   const alreadyCompleted = existing?.completed === true
 
   // Mark lesson as completed
-  await supabase.from('user_progress').upsert(
+  const { error: progressError } = await supabase.from('user_progress').upsert(
     {
       user_id: user.id,
       lesson_id: lessonId,
@@ -41,6 +41,10 @@ export async function POST(request: Request) {
     },
     { onConflict: 'user_id,lesson_id' }
   )
+
+  if (progressError) {
+    return NextResponse.json({ error: 'Failed to save progress' }, { status: 500 })
+  }
 
   // Award XP only on first completion
   let xpGained = 0
