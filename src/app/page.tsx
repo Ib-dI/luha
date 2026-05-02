@@ -155,7 +155,7 @@ export default function LandingPage() {
 						SHIMAORÉ · MAYOTTE
 					</span>
 
-					<h1 className="font-display text-[52px] md:text-[72px] lg:text-[80px] leading-none tracking-[-0.01em] mt-2">
+					<h1 className="font-britney-regular text-[52px] md:text-[72px] lg:text-[80px] leading-none tracking-[-0.01em] mt-2">
 						<span className="text-(--text-dark)">
 							APPRENDS LA
 							<br />
