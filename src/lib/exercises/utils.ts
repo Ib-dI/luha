@@ -36,7 +36,7 @@ export function normalizeAnswer(s: string): string {
   // Step 2 – lowercase
   result = result.toLowerCase()
   // Step 3 – strip accent marks (NFD + remove combining diacritical marks U+0300–U+036F)
-  result = result.normalize('NFD').replace(/[̀-ͯ]/g, '').normalize('NFC')
+  result = result.normalize('NFD').replace(/\p{M}/gu, '').normalize('NFC')
   // Step 4 – collapse whitespace and trim
   result = result.replace(/\s+/g, ' ').trim()
   return result
