@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Lock, CheckCircle2, ChevronRight } from 'lucide-react'
 import type { Lesson } from '@/data/lessonData'
 import { getLessonStatus, type LessonStatus } from '@/lib/lessons/progressionEngine'
+import { STAGGER_DELAY, FADE_DURATION, EASE_OUT } from '@/lib/animations/timings'
 
 // ─── Chapitres ────────────────────────────────────────────────────────────────
 
@@ -164,7 +165,7 @@ export default function LessonMap({
             key={chapter.id}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, delay: chapterIndex * 0.08 }}
+            transition={{ duration: FADE_DURATION.normal, delay: chapterIndex * STAGGER_DELAY.chapter }}
           >
             {/* Chapter header */}
             <div
@@ -253,7 +254,7 @@ function LessonCard({ lesson, status, chapterColor, animIndex }: LessonCardProps
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35, delay: animIndex * 0.025, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: FADE_DURATION.fast, delay: animIndex * STAGGER_DELAY.card, ease: EASE_OUT }}
       whileHover={isLocked ? {} : { y: -2, transition: { duration: 0.15 } }}
       className="relative grain grain-light rounded-xl p-4 flex items-start gap-3 overflow-hidden group"
       style={{

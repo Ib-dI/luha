@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react'
 import type { Lesson, LessonContent } from '@/data/lessonData'
+import { STAGGER_DELAY, FADE_DURATION, EASE_OUT } from '@/lib/animations/timings'
 
 interface LessonViewerProps {
   lesson: Lesson
@@ -141,7 +142,7 @@ function ContentBlock({ block, index }: { block: LessonContent; index: number })
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: 0.1 + index * 0.04, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: FADE_DURATION.fast, delay: 0.1 + index * STAGGER_DELAY.section, ease: EASE_OUT }}
     >
       {block.type === 'table' ? (
         <TableBlock header={block.value.header} rows={block.value.rows} />
