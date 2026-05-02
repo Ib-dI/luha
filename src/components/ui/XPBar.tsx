@@ -1,8 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-
-const XP_PER_LEVEL = 500
+import { getXPProgress } from '@/lib/gamification/xp'
 
 interface XPBarProps {
   xp: number
@@ -10,8 +9,7 @@ interface XPBarProps {
 }
 
 export default function XPBar({ xp, level }: XPBarProps) {
-  const xpInLevel = xp % XP_PER_LEVEL
-  const progress = Math.min((xpInLevel / XP_PER_LEVEL) * 100, 100)
+  const { current, required, percent } = getXPProgress(xp)
 
   return (
     <div
@@ -21,7 +19,6 @@ export default function XPBar({ xp, level }: XPBarProps) {
         borderBottom: '1px solid rgba(0,0,0,0.06)',
       }}
     >
-      {/* Niveau */}
       <span
         className="text-[10px] font-bold uppercase tracking-widest shrink-0"
         style={{ color: 'var(--accent-blue)', fontFamily: 'var(--font-mono)' }}
@@ -29,7 +26,6 @@ export default function XPBar({ xp, level }: XPBarProps) {
         NIV.{level}
       </span>
 
-      {/* Barre */}
       <div
         className="flex-1 h-1.5 rounded-full overflow-hidden"
         style={{ background: 'rgba(0,0,0,0.08)' }}
@@ -38,18 +34,17 @@ export default function XPBar({ xp, level }: XPBarProps) {
           className="h-full rounded-full"
           style={{ background: 'var(--accent-blue)' }}
           initial={{ width: 0 }}
-          animate={{ width: `${progress}%` }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          animate={{ width: `${percent}%` }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
         />
       </div>
 
-      {/* XP */}
       <span
         className="text-[10px] shrink-0 tabular-nums"
         style={{ color: 'var(--text-gray)', fontFamily: 'var(--font-mono)' }}
       >
-        {xpInLevel}
-        <span style={{ color: 'rgba(0,0,0,0.2)' }}>/{XP_PER_LEVEL}</span>
+        {current}
+        <span style={{ color: 'rgba(0,0,0,0.2)' }}>/{required}</span>
       </span>
     </div>
   )

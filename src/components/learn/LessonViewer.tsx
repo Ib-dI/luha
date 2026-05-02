@@ -2,9 +2,10 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react'
+import { ArrowLeft, BookOpen } from 'lucide-react'
 import type { Lesson, LessonContent } from '@/data/lessonData'
 import { STAGGER_DELAY, FADE_DURATION, EASE_OUT } from '@/lib/animations/timings'
+import LessonCompleteButton from './LessonCompleteButton'
 
 interface LessonViewerProps {
   lesson: Lesson
@@ -111,25 +112,26 @@ export default function LessonViewer({ lesson, prevLesson, nextLesson }: LessonV
           <div className="flex-1" />
         )}
 
-        {nextLesson ? (
-          <Link href={`/learn/${nextLesson.id}`} className="flex-1">
-            <motion.div
-              whileHover={{ x: 2 }}
-              className="flex items-center justify-end gap-2 px-4 py-3 rounded-xl text-sm font-semibold"
-              style={{ background: 'var(--accent-blue)', color: 'white' }}
-            >
-              <span className="truncate">{nextLesson.title.replace(/^\d+\s*-\s*/, '')}</span>
-              <ArrowRight size={13} />
-            </motion.div>
-          </Link>
-        ) : (
-          <div
-            className="flex-1 flex items-center justify-center px-4 py-3 rounded-xl text-sm font-semibold"
-            style={{ background: 'rgba(34,167,34,0.1)', color: '#22a722' }}
-          >
-            🎉 Parcours terminé !
-          </div>
-        )}
+        <LessonCompleteButton
+          lessonId={lesson.id}
+          nextLessonId={nextLesson?.id ?? null}
+        />
+      </motion.div>
+
+      {/* ─── Practice CTA ─── */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="text-center"
+      >
+        <Link
+          href={`/learn/${lesson.id}/practice`}
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-opacity hover:opacity-80"
+          style={{ background: 'rgba(75,123,245,0.1)', color: 'var(--accent-blue)', border: '1px solid rgba(75,123,245,0.2)' }}
+        >
+          ⚡ S'entraîner sur cette leçon
+        </Link>
       </motion.div>
     </div>
   )
