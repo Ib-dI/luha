@@ -157,7 +157,7 @@ export default function LandingPage() {
 
 					<div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
 						<div className="flex-1">
-							<h1 className="font-britney-variable text-24 md:text-[72px] lg:text-[80px] leading-none tracking-[-0.01em] font-bold mt-2">
+							<h1 className="font-britney-variable text-24 md:text-[72px] lg:text-42 leading-none tracking-[-0.01em] font-bold mt-2">
 								<span className="text-(--text-dark)">
 									Apprends la langue
 									<br />

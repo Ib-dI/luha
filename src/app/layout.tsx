@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Caveat, IBM_Plex_Mono, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import { Providers } from "@/components/providers";
 import "./globals.css";
 
@@ -27,6 +28,17 @@ const ibmPlexMono = IBM_Plex_Mono({
 	subsets: ["latin"],
 });
 
+const britney = localFont({
+	src: [
+		{ path: "../../public/fonts/Britney-Light.woff2",    weight: "300", style: "normal" },
+		{ path: "../../public/fonts/Britney-Regular.woff2",  weight: "400", style: "normal" },
+		{ path: "../../public/fonts/Britney-Bold.woff2",     weight: "700", style: "normal" },
+		{ path: "../../public/fonts/Britney-Ultra.woff2",    weight: "900", style: "normal" },
+	],
+	variable: "--font-britney",
+	display: "swap",
+});
+
 export const metadata: Metadata = {
 	title: "Luha — Apprends le shimaoré",
 	description:
@@ -42,7 +54,7 @@ export default function RootLayout({
 		<html
 			suppressHydrationWarning
 			lang="fr"
-			className={`${bebasNeue.variable} ${inter.variable} ${caveat.variable} ${ibmPlexMono.variable}`}
+			className={`${bebasNeue.variable} ${inter.variable} ${caveat.variable} ${ibmPlexMono.variable} ${britney.variable}`}
 		>
 			<head>
 				<link rel="icon" href="/logo/dark_favicon.png" type="image/png" />
