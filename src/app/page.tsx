@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 /* ─── Reusable primitives ─────────────────────────────────────── */
@@ -69,17 +69,12 @@ export default function LandingPage() {
 			{/* ── NAVBAR ─────────────────────────────────────────────── */}
 			<nav className="fixed top-0 left-0 right-0 z-100 py-4.5 bg-[rgba(242,237,227,0.78)] backdrop-blur-xs border-b border-black/8">
 				<div className="flex items-center gap-8 px-6 sm:px-12 md:px-16 lg:px-24">
-					
-					<Link
-						href="/"
-						className="flex items-center gap-2 mr-auto"
-					>
+					<Link href="/" className="flex items-center gap-2 mr-auto">
 						<Image
 							src="/logo/Logo desktop light theme.png"
 							alt="Luha Logo"
 							width={70}
 							height={40}
-							
 						/>
 					</Link>
 					<ul className="hidden md:flex gap-8 list-none">
@@ -100,7 +95,7 @@ export default function LandingPage() {
 							</a>
 						</li>
 					</ul>
-					<BtnPrimary href="/learn">Commencer gratuitement</BtnPrimary>
+					<BtnPrimary href="/learn">Commencer</BtnPrimary>
 				</div>
 			</nav>
 
@@ -157,7 +152,7 @@ export default function LandingPage() {
 
 					<div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
 						<div className="flex-1">
-							<h1 className="font-britney-variable text-24 md:text-[72px] lg:text-42 leading-none tracking-[-0.01em] font-bold mt-2">
+							<h1 className="font-britney-variable text-24 md:text-6xl lg:text-7xl leading-none tracking-[-0.01em] font-bold mt-2">
 								<span className="text-(--text-dark)">
 									Apprends la langue
 									<br />
@@ -165,7 +160,9 @@ export default function LandingPage() {
 									<br />
 									Le
 								</span>
-								<span className="text-(--accent-blue) ml-2 circle">Shi-Maoré.</span>
+								<span className="text-(--accent-blue) ml-2 circle">
+									Shi-Maoré.
+								</span>
 							</h1>
 						</div>
 
@@ -192,11 +189,11 @@ export default function LandingPage() {
 					</p>
 
 					<div className="flex gap-3 flex-wrap mt-1">
-						<BtnPrimary href="/dashboard">Commencer — gratuit</BtnPrimary>
+						<BtnPrimary href="/dashboard">Commencer</BtnPrimary>
 						<BtnOutline href="#methode">Voir la méthode</BtnOutline>
 					</div>
 
-					<div className="flex items-center gap-3 flex-wrap font-mono text-[13px] text-(--accent-red) tracking-[0.04em] mt-2">
+					<div className="flex items-center gap-3 flex-wrap font-mono text-[13px]  text-(--accent-red) tracking-[0.04em] mt-2">
 						<span>12 000 mots</span>
 						<span className="opacity-30">·</span>
 						<span>8 modules</span>
@@ -207,7 +204,7 @@ export default function LandingPage() {
 			</section>
 
 			{/* ── SOCIAL PROOF ───────────────────────────────────────── */}
-			<section className="grid-light ch-box ch-light relative bg-(--bg-light-2) text-center py-16 md:py-24 px-4 sm:px-8 md:px-16">
+			{/* <section className="grid-light ch-box ch-light relative bg-(--bg-light-2) text-center py-16 md:py-24 px-4 sm:px-8 md:px-16">
 				<Crosshairs />
 
 				<div className="container-custom mx-auto flex flex-col items-center gap-5">
@@ -251,7 +248,7 @@ export default function LandingPage() {
 						— &quot;Pourquoi tu ne sais pas encore ?&quot;
 					</p>
 				</div>
-			</section>
+			</section> */}
 
 			{/* ── MÉTHODE ────────────────────────────────────────────── */}
 			<section
@@ -282,44 +279,52 @@ export default function LandingPage() {
 				/>
 
 				<div className="container-custom mx-auto relative z-1">
-					<p className="font-mono text-[11px] tracking-[0.12em] uppercase text-(--accent-red) mb-3">
+					<p className="font-mono bg-[rgba(232,72,72,0.12)] w-fit py-1 px-3 rounded-2xl text-[11px] tracking-[0.12em] uppercase text-(--accent-red) mb-3">
 						La Méthode
 					</p>
-					<h2 className="font-display text-4xl md:text-5xl text-(--text-dark) leading-[1.05] mb-12">
-						APPRENDS COMME
+					<h2 className="font-britney-variable text-4xl md:text-5xl text-(--text-dark) font-bold leading-[1.05] mb-12">
+						Apprends comme
 						<br />
-						UN NATIF.
+						un natif.
 					</h2>
 
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 						{[
 							{
 								num: "01",
-								icon: "📚",
+								icon: "/images/Livre.png",
 								title: "Leçons structurées",
 								desc: "Chaque module avance pas à pas — alphabet, prononciation, grammaire simple, vocabulaire ancré dans la vie quotidienne à Mayotte.",
 							},
 							{
 								num: "02",
-								icon: "🎮",
+								icon: "/images/Jeux.png",
 								title: "Exercices gamifiés",
 								desc: "XP, streaks, cœurs — chaque session de 5 min compte. Tu progresses sans t'en rendre compte.",
 							},
 							{
 								num: "03",
-								icon: "🌿",
+								icon: "/images/Culture.png",
 								title: "Culture & contexte",
 								desc: "Le shimaoré ne s'apprend pas hors sol. Chaque leçon est ancrée dans la culture, les usages et l'histoire de Mayotte.",
 							},
 						].map(({ num, icon, title, desc }) => (
 							<div
 								key={num}
-								className="grain grain-light relative overflow-hidden rounded-2xl p-8 bg-(--bg-light-2) border border-black/8"
+								className="grain grain-light relative overflow-hidden rounded-2xl p-4 bg-[#f5efe7] border border-black/8"
 							>
-								<span className="absolute -top-4 right-5 font-display text-[100px] text-(--accent-red) opacity-[0.07] leading-none pointer-events-none select-none">
-									{num}
-								</span>
-								<span className="text-[32px] mb-4 block">{icon}</span>
+								<div className="absolute top-.5 left-.5 grid h-14 w-14 place-items-center rounded-xl bg-[#fdf5ea] border-2 border-(--accent-red)">
+									<span className="font-display mt-1.5 mr-1.5 text-5xl text-(--accent-red) leading-none font-semibold pointer-events-none select-none italic">
+										{num}
+									</span>
+								</div>
+							<Image 
+								src={icon} 
+								alt={title} 
+								width={64} 
+								height={64} 
+								className="mb-4 object-contain"
+							/>
 								<h3 className="text-[17px] font-bold text-(--text-dark) mb-2.5">
 									{title}
 								</h3>
@@ -335,18 +340,18 @@ export default function LandingPage() {
 			{/* ── MODULES ────────────────────────────────────────────── */}
 			<section
 				id="modules"
-				className="grid-light ch-box ch-light relative bg-(--bg-light-2) py-16 md:py-24 px-4 sm:px-8 md:px-16"
+				className="grid-light ch-box ch-light relative bg-(--bg-light) py-16 md:py-24 px-4 sm:px-8 md:px-16"
 			>
 				<Crosshairs />
 
 				<div className="container-custom mx-auto">
-					<p className="font-mono text-[11px] tracking-[0.12em] uppercase text-(--accent-red)] mb-3">
+					<p className="font-mono text-[11px] tracking-[0.12em] uppercase bg-[rgba(232,72,72,0.12)] w-fit py-1 px-3 rounded-2xl text-(--accent-red) mb-3">
 						Les Modules
 					</p>
-					<h2 className="font-display text-4xl md:text-5xl text-(--text-dark) leading-[1.05] mb-12">
-						8 NIVEAUX.
+					<h2 className="font-britney-variable text-4xl md:text-5xl text-(--text-dark) font-bold leading-[1.05] mb-12">
+						8 niveaux.
 						<br />
-						UN VOYAGE.
+						Un voyage.
 					</h2>
 
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -523,9 +528,9 @@ export default function LandingPage() {
 				/>
 
 				<div className="container-custom mx-auto flex flex-col items-center gap-5 relative z-1">
-					<h2 className="font-display text-6xl md:text-[76px] text-(--text-dark) leading-[0.98]">
-						PRÊT À<br />
-						COMMENCER ?
+					<h2 className="font-britney-variable font-bold text-6xl md:text-6xl text-(--text-dark) leading-[0.98]">
+						Prêt à<br />
+						commencer ?
 					</h2>
 
 					<p className="text-base text-(--text-dark-gray)">
